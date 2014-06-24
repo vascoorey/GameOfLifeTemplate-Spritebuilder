@@ -13,4 +13,7 @@
 @property (nonatomic) int totalAlive;
 @property (nonatomic) int generation;
 
+- (void)evolveStep;
+- (void)countNeighbors;
+
 @end
