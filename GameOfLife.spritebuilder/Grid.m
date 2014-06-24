@@ -54,8 +54,8 @@ static const int GRID_COLUMNS = 10;
 }
 
 - (Creature *)creatureForTouchLocation:(CGPoint)location {
-  int row = self.contentSize.height / location.y;
-  int col = self.contentSize.width / location.x;
+  int row = location.y / _cellHeight;
+  int col = location.x / _cellWidth;
   return _gridArray[row][col];
 }
 
