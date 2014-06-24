@@ -45,13 +45,24 @@ static const int GRID_COLUMNS = 10;
       [self addChild:c];
       
       _gridArray[i][j] = c;
-      c.alive = YES;
       
       x += _cellWidth;
     }
     
     y += _cellHeight;
   }
+}
+
+- (Creature *)creatureForTouchLocation:(CGPoint)location {
+  int row = self.contentSize.height / location.y;
+  int col = self.contentSize.width / location.x;
+  return _gridArray[row][col];
+}
+
+- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+  CGPoint touchLocation = [touch locationInNode:self];
+  Creature *c = [self creatureForTouchLocation:touchLocation];
+  c.alive = YES;
 }
 
 @end
